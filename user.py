@@ -33,7 +33,10 @@ class User:
         return self.__last_name
 
     def set_house_number(self, house_number):
-        self.__last_name = house_number
+        try:
+            self.__last_name = house_number
+        except ValueError:
+            print("This value was no valid number. Try again!")
 
     def get_house_number(self):
         return self.__house_number
@@ -45,7 +48,10 @@ class User:
         return self.__street
 
     def set_postal_code(self, postal_code):
-        self.__postal_code = postal_code
+        try:
+            self.__postal_code = postal_code
+        except ValueError:
+            print("This value was no valid number. Try again!")
 
     def get_postal_code(self):
         return self.__postal_code

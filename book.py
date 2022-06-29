@@ -25,7 +25,10 @@ class Book:
         return self.__author
 
     def set_year(self, year):
-        self.__year = year
+        try:
+            self.__year = year
+        except ValueError:
+            print("This value was no valid number. Try again!")
 
     def get_year(self):
         return self.__year
@@ -37,7 +40,10 @@ class Book:
         return self.__publisher
 
     def set_number_of_copiesa_vailable(self, number_of_copiesa_vailable):
-        self.__number_of_copiesa_vailable = number_of_copiesa_vailable
+        try:
+            self.__number_of_copiesa_vailable = number_of_copiesa_vailable
+        except ValueError:
+            print("This value was no valid number. Try again!")
 
     def get_number_of_copiesa_vailable(self):
         return self.__number_of_copiesa_vailable
