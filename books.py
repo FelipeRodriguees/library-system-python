@@ -1,11 +1,11 @@
 
-class BookList:
+class Books:
     def __init__(self, book):
         self.__book = book
-        list_books = [self.__book]
+        self.list_books = [self.__book]
 
     def add_book(self, book):
-        list.append(book)
+        self.list_books.append(book)
 
     def find_title(self, list_books, title):
         for book in list_books:
@@ -13,6 +13,7 @@ class BookList:
                 return book
 
     def find_author(self, list_books, author):
+
         for book in list_books:
             if book.author == author:
                 return book
@@ -33,5 +34,5 @@ class BookList:
                 index = list_books.index(book)
                 list_books.pop(index)
 
-    def get_total(self, list_books):
-        return len(list_books)
+    def get_total(self):
+        return len(self.list_books)

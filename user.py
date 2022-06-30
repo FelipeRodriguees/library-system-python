@@ -1,7 +1,4 @@
 
-# 4. A classe deve incluir a verificação de erros apropriada.
-# 5. A aula deve ter sido bem documentada por comentários.
-
 class User:
 
     def __init__(self, user_name, name, last_nam, house_number, street, postal_code, email, birth_date):
@@ -54,7 +51,8 @@ class User:
             print("This value was no valid number. Try again!")
 
     def get_postal_code(self):
-        return self.__postal_code
+        return self.__postal_code,
+
 
     def set_email(self, email):
         self.__email = email
