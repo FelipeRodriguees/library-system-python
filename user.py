@@ -1,15 +1,14 @@
 
 class User:
     def __init__(self, user_name, name, last_nam, house_number, street, postal_code, email, birth_date):
-        self.__user_name = user_name
-        self.__name = name
-        self.__last_name = last_nam
-        self.__house_number = house_number
-        self.__street = street
+        self.__user_name = user_name.title()
+        self.__name = name.title()
+        self.__last_name = last_nam.title()
+        self.__house_number = house_number.title()
+        self.__street = street.title()
         self.__postal_code = postal_code
         self.__email = email
         self.__birth_date = birth_date
-        self.__borrowing = []
 
     @property
     def user_name(self):
@@ -73,9 +72,3 @@ class User:
     def set_birth_date(self, birth_date):
         self.__birth_date = birth_date
 
-    @property
-    def borrowing(self):
-        return self.__borrowing
-
-    def set_borrowing(self, book):
-        self.__borrowing.append(book)

@@ -1,10 +1,8 @@
 from datetime import datetime
 
-from borrowed import Borrowed
-
 class Books:
-    def __init__(self, book):
-        self.__list_books = [self.serializer(book)]
+    def __init__(self):
+        self.__list_books = []
 
     def serializer(self, book):
         __book = {
@@ -21,7 +19,15 @@ class Books:
         self.__list_books.append(self.serializer(book))
 
     def get_all(self):
-        return self.__list_books
+        for book in self.__list_books:
+            print("+--------------------------------+")
+            print("Título: ", book["title"])
+            print("Autor: ", book["author"])
+            print("Ano: ", book["year"])
+            print("Editora: ", book["publisher"])
+            print("Número de exemplares: ", book["number_of_copies_available"])
+            print("Data de publicação: ", book["publication_date"])
+            print("+--------------------------------+")
 
     def find_title(self, title):
         for book in self.__list_books:
