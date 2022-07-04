@@ -84,7 +84,6 @@ def start():
         print("14 - Atualizar a data de publicação do livro.")
         print("15 - Alterar exemplares do livro.")
         print("16 - Alterar o ano do livro.")
-
         print("17 - Alterar o nome de usuário.")
         print("18 - Alterar o nome do usuário.")
         print("19 - Alterar o sobrenome do usuário.")
@@ -166,7 +165,6 @@ def add_users():
     qtd_users = int(input("Quantos usuários deseja cadastrar? "))
     for x in range(qtd_users):
         user_cict = create_user()
-        print(user_cict)
         user = User(user_cict["user_name"], user_cict["name"], user_cict["last_name"], user_cict["house_number"],
                     user_cict["street"], user_cict["postal_code"], user_cict["email"], user_cict["birth_date"])
         users.add_user(user)
