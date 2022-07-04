@@ -71,4 +71,3 @@ class User:
 
     def set_birth_date(self, birth_date):
         self.__birth_date = birth_date
-

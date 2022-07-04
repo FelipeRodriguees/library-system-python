@@ -1,5 +1,6 @@
 from datetime import datetime
 
+
 class Books:
     def __init__(self):
         self.__list_books = []
@@ -16,7 +17,9 @@ class Books:
         return __book
 
     def add_book(self, book):
+        print(self.serializer(book))
         self.__list_books.append(self.serializer(book))
+        print(len(self.__list_books))
 
     def get_all(self):
         for book in self.__list_books:
@@ -31,7 +34,25 @@ class Books:
 
     def find_title(self, title):
         for book in self.__list_books:
-            if book.title == title:
+            if book["title"] == title:
+                print("+--------------------------------+")
+                print("Título: ", book["title"])
+                print("Autor: ", book["author"])
+                print("Ano: ", book["year"])
+                print("Número de exemplares: ", book["number_of_copies_available"])
+                print("+--------------------------------+")
+                return book
+
+    def find_title_for_loan(self, title):
+        for book in self.__list_books:
+            if book["title"] == title and book["number_of_copies_available"] > 0:
+                print("+--------------------------------+")
+                print("Título: ", book["title"])
+                print("Autor: ", book["author"])
+                print("Ano: ", book["year"])
+                print("Número de exemplares: ", book["number_of_copies_available"])
+                print("+--------------------------------+")
+                book["number_of_copies_available"] -= 1
                 return book
 
     def find_author(self, author):
@@ -54,17 +75,6 @@ class Books:
             if book.title == title:
                 index = self.__list_books.index(book)
                 self.__list_books.pop(index)
-
-    def lend_book(self, title, user):
-        for book in self.__list_books:
-            if book["title"] == title and book["number_of_copies_available"] > 0:
-                book["number_of_copies_available"] -= 1
-                book_for_user = book
-                book_for_user["loan_date"] = datetime.today().strftime('%Y-%m-%d %H:%M')
-                # borrowed = borrowed.set_borrowed(book_for_user)
-                user.set_borrowing(book_for_user)
-            else:
-                print("This book is not available")
 
     def get_total(self):
         return len(self.__list_books)

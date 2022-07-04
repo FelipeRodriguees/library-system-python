@@ -1,11 +1,11 @@
-
 import random
+
 
 class Book:
 
     def __init__(self, title, author, year, publisher, number_of_copies_available, publication_date):
         self.__id = random.randint(1, 1000)
-        self.__title = title.title()
+        self.__title = title
         self.__author = author.title()
         self.__year = year
         self.__publisher = publisher.title()

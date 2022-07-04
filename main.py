@@ -2,9 +2,11 @@ from book import Book
 from books import Books
 from user import User
 from users import Users
+from borrowed import Borrowed
 
 books = Books()
 users = Users()
+borrowed = Borrowed()
 option = 0
 
 
@@ -71,7 +73,12 @@ def start():
         print("3 - Para para mostrar a quantidade de usuarios.")
         print("4 - Para o cadastro de livro.")
         print("5 - Para para mostrar todos os livros.")
-        print("6 - Para sair")
+        print("6 - Para emprestar um livro.")
+        print("7 - Para ver todos livros emprestados.")
+        print("8 - Para buscar um livro pelo titulo.")
+        print("9 - Total de livros registrados.")
+        print("10 - Para devolver um livro.")
+        print("11 - Para sair.")
         option = int(input("Opção: "))
 
         if option == 1:
@@ -87,6 +94,16 @@ def start():
         elif option == 5:
             get_all_books()
         elif option == 6:
+            new_loan()
+        elif option == 7:
+            get_all_borrowed()
+        elif option == 8:
+            get_book_by_title()
+        elif option == 9:
+            get_total_books()
+        elif option == 10:
+            return_book()
+        elif option == 11:
             print("Finalizando...")
             exit()
         else:
@@ -108,19 +125,51 @@ def add_users():
         user_cict = create_user()
         print(user_cict)
         user = User(user_cict["user_name"], user_cict["name"], user_cict["last_name"], user_cict["house_number"],
-                user_cict["street"], user_cict["postal_code"], user_cict["email"], user_cict["birth_date"])
+                    user_cict["street"], user_cict["postal_code"], user_cict["email"], user_cict["birth_date"])
         users.add_user(user)
+
 
 def get_all_books():
     books.get_all()
 
+
+def get_book_by_title():
+    book_name = input("Digite o nome do livro: ")
+    books.find_title(book_name)
+
+
 def get_all_users():
     users.get_total()
 
+
 def get_full_user():
     user_name = input("Digite o nome de usuário: ")
-    users.find_user_by_user_name(user_name.title())
+    users.find_user_by_user_name_and_print(user_name.title())
 
+
+def new_loan():
+    user_name = input("Digite o nome de usuário: ")
+    user = users.find_user_by_user_name(user_name.title())
+    book_name = input("Digite o nome do livro: ")
+    book = books.find_title(book_name)
+    date_give_back = input("Digite a data de devolução [yyyy-mm-dd]: ")
+    borrowed.add_borrowed(book, user["user_name"], date_give_back)
+
+
+def get_all_borrowed():
+    borrowed.get_all_borrowed()
+
+
+def get_total_books():
+    total = books.get_total()
+    print("O total de livros é ", total)
+
+
+def return_book():
+    user_name = input("Digite o nome de usuário: ")
+    title = input("Digite o nome do livro: ")
+    borr = borrowed.return_book(user_name.title(), title)
+    borrowed.delete_book(borr)
 
 if __name__ == '__main__':
     start()
