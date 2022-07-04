@@ -1,11 +1,11 @@
 
 class User:
     def __init__(self, user_name, name, last_nam, house_number, street, postal_code, email, birth_date):
-        self.__user_name = user_name.title()
-        self.__name = name.title()
-        self.__last_name = last_nam.title()
-        self.__house_number = house_number.title()
-        self.__street = street.title()
+        self.__user_name = user_name
+        self.__name = name
+        self.__last_name = last_nam
+        self.__house_number = house_number
+        self.__street = street
         self.__postal_code = postal_code
         self.__email = email
         self.__birth_date = birth_date
@@ -37,7 +37,7 @@ class User:
 
     def set_house_number(self, house_number):
         try:
-            self.__last_name = house_number
+            self.__house_number = house_number
         except ValueError:
             print("This value was no valid number. Try again!")
 

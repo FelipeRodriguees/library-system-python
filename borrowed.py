@@ -6,15 +6,13 @@ class Borrowed:
         self.__borrowed = []
 
     def serializer(self, book, user_name, date_give_back):
-        print(book)
-        print(book["title"])
         __book = {
-            "title": book["title"],
-            "author": book["author"],
-            "year": book["year"],
-            "publisher": book["publisher"],
-            "number_of_copies_available": book["number_of_copies_available"],
-            "publication_date": book["publication_date"],
+            "title": book.title,
+            "author": book.author,
+            "year": book.year,
+            "publisher": book.publisher,
+            "number_of_copies_available": book.number_of_copies_available,
+            "publication_date": book.publication_date,
             "user_name": user_name,
             "loan_date": datetime.today().strftime('%Y-%m-%d'),
             "date_give_back": date_give_back,
@@ -38,7 +36,7 @@ class Borrowed:
 
     def return_book(self, user_name, title):
         for i, borrowed in self.__borrowed:
-            if borrowed["user_name"] == user_name:
+            if borrowed.user_name == user_name:
                 print("Livro Devolvido")
                 return borrowed
 
